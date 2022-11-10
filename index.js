@@ -1,9 +1,5 @@
 const inquirer = require(`inquirer`);
 const fs = require(`fs`);
-const engineer = require(`./lib/engineer`)
-const employee = require(`./lib/employee`)
-const intern = require(`./lib/intern`)
-const manager = require(`./lib/manager`)
 
 let employeeList = [];
 
@@ -11,25 +7,28 @@ const addEmployee = () => {
 inquirer.prompt([
 {
     type: "input",
-    name: "employeeName",
-    message: "What is the employee's name?",
-}
+    name: "managerName",
+    message: "What is the team manager's name?",
+},
 {
     type: "input",
-    name: "employeeName",
-    message: "What is the employee's name?",
-}
+    name: "employeeId",
+    message: "What is the employee ID?",
+},
 {
     type: "input",
-    name: "employeeName",
-    message: "What is the employee's name?",
-}
+    name: "employeeEmail",
+    message: "What is the employee email address?",
+},
+{
+    type: "input",
+    name: "employeeOffice",
+    message: "What is the employee office number?",
+},
 ]
 )
 .then(answers => {
-    employeeList.push({
-
-    })
+    employeeList.push;
     console.log(answers);
     menu();
 })
@@ -63,7 +62,7 @@ return inquirer.prompt([
         case "Exit":
             return exit(); 
     }
-})
+});
 }
 
 menu();
