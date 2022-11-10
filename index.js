@@ -1,18 +1,35 @@
 const inquirer = require(`inquirer`);
+const fs = require(`fs`);
+const engineer = require(`./lib/engineer`)
+const employee = require(`./lib/employee`)
+const intern = require(`./lib/intern`)
+const manager = require(`./lib/manager`)
 
-const employeeLIst = [];
+let employeeList = [];
 
 const addEmployee = () => {
 inquirer.prompt([
 {
-    type: "list",
+    type: "input",
+    name: "employeeName",
+    message: "What is the employee's name?",
+}
+{
+    type: "input",
+    name: "employeeName",
+    message: "What is the employee's name?",
+}
+{
+    type: "input",
     name: "employeeName",
     message: "What is the employee's name?",
 }
 ]
 )
 .then(answers => {
-    //add box to list 
+    employeeList.push({
+
+    })
     console.log(answers);
     menu();
 })
@@ -23,7 +40,7 @@ const print = () => {
     return menu();
 }
 
-const endProgram = () => {
+const exit = () => {
     console.log("Byyyye");
     return; 
 }
@@ -34,7 +51,7 @@ return inquirer.prompt([
     {
     type: "list",
     message: "Choose an option",
-    choices: []
+    choices: ["Add an employee", "Print", "Exit"]
     }
 ])
 .then( ({option}) => {
