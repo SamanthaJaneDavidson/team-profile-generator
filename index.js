@@ -69,7 +69,7 @@ addManager = () => {
     ])
 
         .then(answers => {
-            const newManager = new Manager(answers.id, answers.managerName, answers.email, answers.officeNumber)
+            const newManager = new Manager(answers.managerName, answers.id, answers.email, answers.officeNumber)
             employeeList.push(newManager);
             console.log(answers);
             menu();
@@ -87,15 +87,77 @@ addEmployee = () => {
 }])
 .then(answers => {
     if("Engineer" === answers.employeeType) {
-        addEnginner()
+        addEngineer()
     }
     else { addIntern()
     }
 })
 }
 
-//add enginner - do the same thing as on 71-75
-//add intern - do the same thing as on 71-75
+addEngineer = () => {
+    inquirer.prompt([
+        {
+            type: "input",
+            name: "engineerName",
+            message: "What is the engineer's name?",
+        },
+        {
+            type: "input",
+            name: "id",
+            message: "What is the engineer's ID?",
+        },
+        {
+            type: "input",
+            name: "email",
+            message: "What is the engineer's email address?",
+        },
+        {
+            type: "input",
+            name: "gitHub",
+            message: "What is the engineer's GitHub username'?",
+        },
+    ])
+
+        .then(answers => {
+            const newEngineer = new Engineer(answers.engineerName, answers.id, answers.email, answers.gitHub)
+            employeeList.push(newEngineer);
+            console.log(answers);
+            menu();
+        })
+};
+
+addIntern = () => {
+    inquirer.prompt([
+        {
+            type: "input",
+            name: "internName",
+            message: "What is the intern's name?",
+        },
+        {
+            type: "input",
+            name: "id",
+            message: "What is the intern's ID?",
+        },
+        {
+            type: "input",
+            name: "email",
+            message: "What is the intern's email address?",
+        },
+        {
+            type: "input",
+            name: "school",
+            message: "What is the intern's school'?",
+        },
+    ])
+
+        .then(answers => {
+            const newIntern = new Intern(answers.internName, answers.id, answers.email, answers.school)
+            employeeList.push(newEngineer);
+            console.log(answers);
+            menu();
+        })
+};
+
 
 const print = () => {
     console.log(employeeList);
