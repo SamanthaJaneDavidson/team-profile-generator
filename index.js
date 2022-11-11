@@ -1,6 +1,9 @@
 const inquirer = require(`inquirer`);
 const fs = require(`fs`);
 const Manager = require("./lib/manager");
+// const Employee = require("./lib/employee");
+const Engineer = require("./lib/engineer");
+const Intern = require("./lib/intern");
 
 let employeeList = [];
 
@@ -152,7 +155,7 @@ addIntern = () => {
 
         .then(answers => {
             const newIntern = new Intern(answers.internName, answers.id, answers.email, answers.school)
-            employeeList.push(newEngineer);
+            employeeList.push(newIntern);
             console.log(answers);
             menu();
         })
