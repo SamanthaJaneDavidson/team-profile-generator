@@ -98,7 +98,13 @@ addEmployee = () => {
 //add intern - do the same thing as on 71-75
 
 const print = () => {
-    console.log("printing");
+    console.log(employeeList);
+    let employeeList = "";
+    employeeList.map() //look at what Anthony did in 00 index file - gotta put a for loop or something like that in here 
+    //add html here? 
+    fs.writeFile("employee-list.html", data, (err) => {
+        err ? console.log(err) : console.log("Output complete")
+    })
     return menu();
 }
 

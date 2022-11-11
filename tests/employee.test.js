@@ -13,18 +13,18 @@ describe(`employee`, () => {
 describe(`employee`, () => {
     it("should return employee id", () => {
         
-    const obj = new Employee;
+    const obj = new Employee("123", "Sam", "Sam@test.com");
 
-    expect("id" in obj).toEqual(true); ///do what you did above
+    expect(obj.id).toEqual("123");
 });
 });
 
 describe(`employee`, () => {
     it("should return employee email", () => {
         
-    const obj = new Employee;
+    const obj = new Employee("123", "Sam", "Sam@test.com");
 
-    expect("email" in obj).toEqual(true);
+    expect(obj.email).toEqual("Sam@test.com");
 
 });
 });
@@ -32,9 +32,9 @@ describe(`employee`, () => {
 describe(`employee`, () => {
     it("should return employee role", () => {
         
-    const obj = new Employee;
+    const obj = new Employee("Employee");
 
-    expect("role" in obj).toEqual(true);
+    expect(obj.role).toEqual("Employee");
 });
 });
 
