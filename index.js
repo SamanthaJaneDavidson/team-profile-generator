@@ -1,51 +1,11 @@
 const inquirer = require(`inquirer`);
 const fs = require(`fs`);
 const Manager = require("./lib/manager");
-// const Employee = require("./lib/employee");
+const Employee = require("./lib/employee");
 const Engineer = require("./lib/engineer");
 const Intern = require("./lib/intern");
 
 let employeeList = [];
-
-// `<!DOCTYPE html>
-// <html lang="en">
-// <head>
-//   <meta charset="UTF-8">
-//   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-//   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-//   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-//   <link rel="stylesheet" href="style.css">
-//   <title>Team Profiles</title>
-//   <style>
-//     header {
-//         text-align: center;
-//         background-color: blueviolet;
-//         color: white;
-//         font-weight: bold;
-//         font-size: x-large;
-//         height: 50px;
-//     }
-//   </style>
-// </head>
-// <body>
-//     <header>My Team</header>  
-//     <section>
-//         <div class="card" style="width: 18rem;">
-//             <div class="card-body">
-//             <h5 class="card-title">${managerName} || ${employeeName}</h5> // Can I do this?????? 
-//             <h6 class="card-subtitle mb-2 text-muted">${role}</h6>
-//             <ul class="card-text">
-//                 <li>${id}</li> 
-//                 <li>${email}</li> 
-//                 <li>${officeNumber}</li> 
-//                 <li>${gitHub}</li> 
-//                 <li>${school}</li> 
-//             </ul>
-//             </div>
-//         </div>
-//     </section>
-// </body>
-// </html>`
 
 addManager = () => {
     inquirer.prompt([
@@ -81,20 +41,21 @@ addManager = () => {
 
 
 addEmployee = () => {
-    inquirer.prompt([ 
-    {
-        type: "list",
-        name: "employeeType",
-        message: "Select an employee type?",
-        choices: ["Engineer", "Intern"],
-}])
-.then(answers => {
-    if("Engineer" === answers.employeeType) {
-        addEngineer()
-    }
-    else { addIntern()
-    }
-})
+    inquirer.prompt([
+        {
+            type: "list",
+            name: "employeeType",
+            message: "Select an employee type?",
+            choices: ["Engineer", "Intern"],
+        }])
+        .then(answers => {
+            if ("Engineer" === answers.employeeType) {
+                addEngineer()
+            }
+            else {
+                addIntern()
+            }
+        })
 }
 
 addEngineer = () => {
@@ -162,11 +123,56 @@ addIntern = () => {
 };
 
 
+const generateList = () => {
+    // console.log(employeeList);
+    let teamList = ``;
+    employeeList.map(employees => {
+        teamList += `<li>${employees.outcome}</li>`
+    })
+    return teamList 
+}
+
+const generateHTML = () => {
+    return `
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <title>Team Profiles</title>
+    <style>
+        header {
+            text-align: center;
+            background-color: blueviolet;
+            color: white;
+            font-weight: bold;
+            font-size: x-large;
+            height: 50px;
+        }
+    </style>
+    </head>
+    <body>
+        <header>My Team</header>  
+        <section>
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+             ${generateList()}
+                </div>
+            </div>
+        </section>
+    </body>
+    </html>`
+    }
+
+
+    //look at what Anthony did in 00 index file - gotta put a for loop or something like that in here 
+    //add html here?
+    
 const print = () => {
-    console.log(employeeList);
-    let employeeList = "";
-    employeeList.map() //look at what Anthony did in 00 index file - gotta put a for loop or something like that in here 
-    //add html here? 
+    const data = generateHTML();
     fs.writeFile("employee-list.html", data, (err) => {
         err ? console.log(err) : console.log("Output complete")
     })
