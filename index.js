@@ -1,3 +1,4 @@
+// Required modules and classes 
 const inquirer = require(`inquirer`);
 const fs = require(`fs`);
 const Manager = require("./lib/manager");
@@ -8,6 +9,7 @@ const path = require(`path`);
 
 let employeeList = [];
 
+// Function to add manager information 
 addManager = () => {
     inquirer.prompt([
         {
@@ -39,6 +41,7 @@ addManager = () => {
         })
 };
 
+// Function to prompt manager to add a new employee, print, or exit 
 function menu() {
     return inquirer.prompt([
         {
@@ -60,6 +63,7 @@ function menu() {
         });
 }
 
+// Function to choose employee type to enter
 addEmployee = () => {
     inquirer.prompt([
         {
@@ -78,7 +82,7 @@ addEmployee = () => {
         })
 }
 
-
+// Function to add enginner 
 addEngineer = () => {
     inquirer.prompt([
         {
@@ -110,6 +114,7 @@ addEngineer = () => {
         })
 };
 
+// Function to add an intern 
 addIntern = () => {
     inquirer.prompt([
         {
@@ -141,7 +146,7 @@ addIntern = () => {
         })
 };
 
-
+// Function to generate the list of employees from the information entered in the inquirer prompts, using specific HTML elements 
 const generateList = () => {
     let teamList = ``;
     employeeList.map(employee => {
@@ -188,6 +193,7 @@ const generateList = () => {
     return teamList;
 }
 
+// Function to generate the HTML file with team information 
 const generateHTML = () => {
     return `
     <!DOCTYPE html>
@@ -209,6 +215,7 @@ const generateHTML = () => {
     </html>`
 }
 
+// Function to print the HTML file 
 const print = () => {
     const data = generateHTML();
     fs.writeFile(path.basename("./dist/employee-list.html"), data, () => {
@@ -216,9 +223,11 @@ const print = () => {
     return menu();
 }
 
+// Funtion to exit the program 
 const exit = () => {
     console.log("Goodbye");
     return;
 }
 
+// Initial add manager call 
 addManager();
