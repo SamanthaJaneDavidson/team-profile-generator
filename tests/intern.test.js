@@ -34,7 +34,7 @@ describe(`intern`, () => {
 
     const obj = new Intern("789", "Bill", "Bill@test.com");
 
-    expect(obj.role).toEqual("Intern");
+    expect(obj.getRole()).toEqual("Intern");
 });
 });
 

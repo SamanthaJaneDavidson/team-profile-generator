@@ -34,8 +34,6 @@ describe(`manager`, () => {
         
     const obj = new Manager("321", "Ariel", "Ariel@test.com");
 
-    expect(obj.role).toEqual("Manager");
+    expect(obj.getRole()).toBe("Manager");
 });
 });
-
-//need to add tests for the indiviudal functions 

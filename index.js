@@ -39,6 +39,26 @@ addManager = () => {
         })
 };
 
+function menu() {
+    return inquirer.prompt([
+        {
+            type: "list",
+            name: "mainMenu",
+            message: "Choose an option",
+            choices: ["Add an employee", "Print", "Exit"]
+        }
+    ])
+        .then((answers) => {
+            switch (answers.mainMenu) {
+                case "Add an employee":
+                    return addEmployee();
+                case "Print":
+                    return print();
+                case "Exit":
+                    return exit();
+            }
+        });
+}
 
 addEmployee = () => {
     inquirer.prompt([
@@ -57,6 +77,7 @@ addEmployee = () => {
             }
         })
 }
+
 
 addEngineer = () => {
     inquirer.prompt([
@@ -123,13 +144,46 @@ addIntern = () => {
 };
 
 
-const generateList = () => {
-    // console.log(employeeList);
+const generateList = () => { //I don't understand how this function is working 
+    console.log(employeeList);
     let teamList = ``;
-    employeeList.map(employees => {
-        teamList += `<li>${employees.outcome}</li>`
+    employeeList.map(employee => {
+        if(employee.getRole() === "Manager")
+        {teamList += `
+    <div class="card-body">
+        <h5 class="card-title">${employee.name}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">${employee.getRole()}</h6>
+        <ul class="card-text">
+            <li>${employee.id}</li> 
+            <li>${employee.email}</li> 
+            <li>${employee.getOfficeNumber()}</li> 
+        </ul>
+    </div>`}
+        else if(employee.getRole() === "Engineer")
+        {teamList += `
+        <div class="card-body">
+        <h5 class="card-title">${employee.name}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">${employee.getRole()}</h6>
+        <ul class="card-text">
+            <li>${employee.id}</li> 
+            <li>${employee.email}</li> 
+            <li>${employee.getGitHub()}</li> 
+        </ul>
+        </div>`}
+        else if(employee.getRole() === "Intern")
+        {teamList += `
+        <div class="card-body">
+        <h5 class="card-title">${employee.name}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">${employee.getRole()}</h6>
+        <ul class="card-text">
+            <li>${employee.id}</li> 
+            <li>${employee.email}</li> 
+            <li>${employee.getSchool()}</li> 
+        </ul>
+        </div>`}
+        console.log(employee.name)
     })
-    return teamList 
+    return teamList; 
 }
 
 const generateHTML = () => {
@@ -158,23 +212,16 @@ const generateHTML = () => {
         <header>My Team</header>  
         <section>
             <div class="card" style="width: 18rem;">
-                <div class="card-body">
-             ${generateList()}
-                </div>
+               ${generateList()}
             </div>
         </section>
     </body>
     </html>`
     }
-
-
-    //look at what Anthony did in 00 index file - gotta put a for loop or something like that in here 
-    //add html here?
     
 const print = () => {
     const data = generateHTML();
-    fs.writeFile("employee-list.html", data, (err) => {
-        err ? console.log(err) : console.log("Output complete")
+    fs.writeFile("employee-list.html", data, () => {
     })
     return menu();
 }
@@ -183,29 +230,5 @@ const exit = () => {
     console.log("Byyyye");
     return;
 }
-
-
-function menu() {
-    return inquirer.prompt([
-        {
-            type: "list",
-            name: "mainMenu",
-            message: "Choose an option",
-            choices: ["Add an employee", "Print", "Exit"]
-        }
-    ])
-        .then((answers) => {
-            switch (answers.mainMenu) {
-                case "Add an employee":
-                    return addEmployee();
-                case "Print":
-                    return print();
-                case "Exit":
-                    return exit();
-            }
-        });
-}
-
-// menu();
 
 addManager();

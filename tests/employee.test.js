@@ -34,8 +34,6 @@ describe(`employee`, () => {
         
     const obj = new Employee("Employee");
 
-    expect(obj.role).toEqual("Employee");
+    expect(obj.getRole()).toEqual("Employee");
 });
 });
-
-//need to add tests for the indiviudal functions 
