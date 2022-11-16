@@ -4,6 +4,7 @@ const Manager = require("./lib/manager");
 const Employee = require("./lib/employee");
 const Engineer = require("./lib/engineer");
 const Intern = require("./lib/intern");
+const path = require(`path`);
 
 let employeeList = [];
 
@@ -144,46 +145,52 @@ addIntern = () => {
 };
 
 
-const generateList = () => { //I don't understand how this function is working 
+const generateList = () => {
     console.log(employeeList);
     let teamList = ``;
     employeeList.map(employee => {
-        if(employee.getRole() === "Manager")
-        {teamList += `
-    <div class="card-body">
-        <h5 class="card-title">${employee.name}</h5>
-        <h6 class="card-subtitle mb-2 text-muted">${employee.getRole()}</h6>
-        <ul class="card-text">
-            <li>${employee.id}</li> 
-            <li>${employee.email}</li> 
-            <li>${employee.getOfficeNumber()}</li> 
-        </ul>
-    </div>`}
-        else if(employee.getRole() === "Engineer")
-        {teamList += `
-        <div class="card-body">
-        <h5 class="card-title">${employee.name}</h5>
-        <h6 class="card-subtitle mb-2 text-muted">${employee.getRole()}</h6>
-        <ul class="card-text">
-            <li>${employee.id}</li> 
-            <li>${employee.email}</li> 
-            <li>${employee.getGitHub()}</li> 
-        </ul>
-        </div>`}
-        else if(employee.getRole() === "Intern")
-        {teamList += `
-        <div class="card-body">
-        <h5 class="card-title">${employee.name}</h5>
-        <h6 class="card-subtitle mb-2 text-muted">${employee.getRole()}</h6>
-        <ul class="card-text">
-            <li>${employee.id}</li> 
-            <li>${employee.email}</li> 
-            <li>${employee.getSchool()}</li> 
-        </ul>
-        </div>`}
+        if (employee.getRole() === "Manager") {
+            teamList += `
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">${employee.name}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">${employee.getRole()}</h6>
+                    <ul class="card-text">
+                        <li>${employee.id}</li> 
+                        <li>${employee.email}</li> 
+                        <li>${employee.getOfficeNumber()}</li> 
+                    </ul>
+                </div>
+            </div>`}
+        else if (employee.getRole() === "Engineer") {
+            teamList += `
+            <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                    <h5 class="card-title">${employee.name}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">${employee.getRole()}</h6>
+                    <ul class="card-text">
+                        <li>${employee.id}</li> 
+                        <li>${employee.email}</li> 
+                        <li>${employee.getGitHub()}</li> 
+                    </ul>
+                </div>
+            </div>`}
+        else if (employee.getRole() === "Intern") {
+            teamList += `
+            <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                    <h5 class="card-title">${employee.name}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">${employee.getRole()}</h6>
+                    <ul class="card-text">
+                        <li>${employee.id}</li> 
+                        <li>${employee.email}</li> 
+                        <li>${employee.getSchool()}</li> 
+                    </ul>
+                </div>
+            </div>`}
         console.log(employee.name)
     })
-    return teamList; 
+    return teamList;
 }
 
 const generateHTML = () => {
@@ -195,7 +202,7 @@ const generateHTML = () => {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./dist/style.css">
     <title>Team Profiles</title>
     <style>
         header {
@@ -210,18 +217,16 @@ const generateHTML = () => {
     </head>
     <body>
         <header>My Team</header>  
-        <section>
-            <div class="card" style="width: 18rem;">
-               ${generateList()}
-            </div>
+        <section id="team">
+            ${generateList()}
         </section>
     </body>
     </html>`
-    }
-    
+}
+
 const print = () => {
     const data = generateHTML();
-    fs.writeFile("employee-list.html", data, () => {
+    fs.writeFile(path.basename("/dist/employee-list.html"), data, () => {
     })
     return menu();
 }

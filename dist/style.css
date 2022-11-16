@@ -6,3 +6,9 @@ header {
     font-size: x-large;
     height: 50px;
 }
+
+#team {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}

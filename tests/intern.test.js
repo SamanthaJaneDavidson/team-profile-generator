@@ -37,5 +37,3 @@ describe(`intern`, () => {
     expect(obj.getRole()).toEqual("Intern");
 });
 });
-
-//need to add tests for the indiviudal functions 
