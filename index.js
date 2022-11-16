@@ -157,7 +157,7 @@ const generateList = () => {
                     <h6 class="card-subtitle mb-2 text-muted">${employee.getRole()}</h6>
                     <ul class="card-text">
                         <li>${employee.id}</li> 
-                        <li>${employee.email}</li> 
+                        <li><a href="mailto:${employee.email}">Email</a></li> 
                         <li>${employee.getOfficeNumber()}</li> 
                     </ul>
                 </div>
@@ -170,8 +170,8 @@ const generateList = () => {
                     <h6 class="card-subtitle mb-2 text-muted">${employee.getRole()}</h6>
                     <ul class="card-text">
                         <li>${employee.id}</li> 
-                        <li>${employee.email}</li> 
-                        <li>${employee.getGitHub()}</li> 
+                        <li><a href="mailto:${employee.email}">Email</a></li> 
+                        <li><a href="www.github.com/${employee.getGitHub()}">GitHub</a></li> 
                     </ul>
                 </div>
             </div>`}
@@ -183,7 +183,7 @@ const generateList = () => {
                     <h6 class="card-subtitle mb-2 text-muted">${employee.getRole()}</h6>
                     <ul class="card-text">
                         <li>${employee.id}</li> 
-                        <li>${employee.email}</li> 
+                        <li><a href="mailto:${employee.email}">Email</a></li> 
                         <li>${employee.getSchool()}</li> 
                     </ul>
                 </div>
@@ -226,7 +226,7 @@ const generateHTML = () => {
 
 const print = () => {
     const data = generateHTML();
-    fs.writeFile(path.basename("/dist/employee-list.html"), data, () => {
+    fs.writeFile(path.basename("./dist/employee-list.html"), data, () => {
     })
     return menu();
 }
