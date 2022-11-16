@@ -35,7 +35,6 @@ addManager = () => {
         .then(answers => {
             const newManager = new Manager(answers.managerName, answers.id, answers.email, answers.officeNumber)
             employeeList.push(newManager);
-            console.log(answers);
             menu();
         })
 };
@@ -107,7 +106,6 @@ addEngineer = () => {
         .then(answers => {
             const newEngineer = new Engineer(answers.engineerName, answers.id, answers.email, answers.gitHub)
             employeeList.push(newEngineer);
-            console.log(answers);
             menu();
         })
 };
@@ -139,14 +137,12 @@ addIntern = () => {
         .then(answers => {
             const newIntern = new Intern(answers.internName, answers.id, answers.email, answers.school)
             employeeList.push(newIntern);
-            console.log(answers);
             menu();
         })
 };
 
 
 const generateList = () => {
-    console.log(employeeList);
     let teamList = ``;
     employeeList.map(employee => {
         if (employee.getRole() === "Manager") {
@@ -156,9 +152,9 @@ const generateList = () => {
                     <h5 class="card-title">${employee.name}</h5>
                     <h6 class="card-subtitle mb-2 text-muted">${employee.getRole()}</h6>
                     <ul class="card-text">
-                        <li>${employee.id}</li> 
+                        <li> Employee ID: ${employee.id}</li> 
                         <li><a href="mailto:${employee.email}">Email</a></li> 
-                        <li>${employee.getOfficeNumber()}</li> 
+                        <li> Office Number: ${employee.getOfficeNumber()}</li> 
                     </ul>
                 </div>
             </div>`}
@@ -169,7 +165,7 @@ const generateList = () => {
                     <h5 class="card-title">${employee.name}</h5>
                     <h6 class="card-subtitle mb-2 text-muted">${employee.getRole()}</h6>
                     <ul class="card-text">
-                        <li>${employee.id}</li> 
+                        <li> Employee ID: ${employee.id}</li> 
                         <li><a href="mailto:${employee.email}">Email</a></li> 
                         <li><a href="www.github.com/${employee.getGitHub()}">GitHub</a></li> 
                     </ul>
@@ -182,13 +178,12 @@ const generateList = () => {
                     <h5 class="card-title">${employee.name}</h5>
                     <h6 class="card-subtitle mb-2 text-muted">${employee.getRole()}</h6>
                     <ul class="card-text">
-                        <li>${employee.id}</li> 
+                        <li> Employee ID: ${employee.id}</li> 
                         <li><a href="mailto:${employee.email}">Email</a></li> 
-                        <li>${employee.getSchool()}</li> 
+                        <li> School: ${employee.getSchool()}</li> 
                     </ul>
                 </div>
             </div>`}
-        console.log(employee.name)
     })
     return teamList;
 }
@@ -204,16 +199,6 @@ const generateHTML = () => {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="./dist/style.css">
     <title>Team Profiles</title>
-    <style>
-        header {
-            text-align: center;
-            background-color: blueviolet;
-            color: white;
-            font-weight: bold;
-            font-size: x-large;
-            height: 50px;
-        }
-    </style>
     </head>
     <body>
         <header>My Team</header>  
@@ -232,7 +217,7 @@ const print = () => {
 }
 
 const exit = () => {
-    console.log("Byyyye");
+    console.log("Goodbye");
     return;
 }
 
