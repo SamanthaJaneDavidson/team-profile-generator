@@ -157,7 +157,7 @@ const generateList = () => {
                     <h5 class="card-title">${employee.name}</h5>
                     <h6 class="card-subtitle mb-2 text-muted">${employee.getRole()}</h6>
                     <ul class="card-text">
-                        <li> Employee ID: ${employee.id}</li> 
+                        <li> ID: ${employee.id}</li> 
                         <li><a href="mailto:${employee.email}">Email</a></li> 
                         <li> Office Number: ${employee.getOfficeNumber()}</li> 
                     </ul>
@@ -170,7 +170,7 @@ const generateList = () => {
                     <h5 class="card-title">${employee.name}</h5>
                     <h6 class="card-subtitle mb-2 text-muted">${employee.getRole()}</h6>
                     <ul class="card-text">
-                        <li> Employee ID: ${employee.id}</li> 
+                        <li> ID: ${employee.id}</li> 
                         <li><a href="mailto:${employee.email}">Email</a></li> 
                         <li><a href="www.github.com/${employee.getGitHub()}">GitHub</a></li> 
                     </ul>
@@ -183,7 +183,7 @@ const generateList = () => {
                     <h5 class="card-title">${employee.name}</h5>
                     <h6 class="card-subtitle mb-2 text-muted">${employee.getRole()}</h6>
                     <ul class="card-text">
-                        <li> Employee ID: ${employee.id}</li> 
+                        <li> ID: ${employee.id}</li> 
                         <li><a href="mailto:${employee.email}">Email</a></li> 
                         <li> School: ${employee.getSchool()}</li> 
                     </ul>
