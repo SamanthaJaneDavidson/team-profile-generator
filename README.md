@@ -5,10 +5,5 @@ The goal of this project was to create a team profile generator using the node.j
 
 Technologies used: HTML, CSS, JavaScript, Node.js
 
-## Site Image
-![Team Profile Generator](./assets/images/TBA)
-
-To visit the site click [here](TBA). 
-
 ## License
 Please refer to the license in the repo. 
