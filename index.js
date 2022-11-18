@@ -218,7 +218,7 @@ const generateHTML = () => {
 // Function to print the HTML file 
 const print = () => {
     const data = generateHTML();
-    fs.writeFile(path.basename("./dist/employee-list.html"), data, () => {
+    fs.writeFile(path.join(__dirname, "dist", "employee-list.html"), data, () => {
     })
     return menu();
 }

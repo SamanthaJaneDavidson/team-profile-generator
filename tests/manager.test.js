@@ -1,4 +1,4 @@
-const Manager = require("../lib/employee");
+const Manager = require("../lib/manager");
 
 describe(`manager`, () => {
     it("should return employee name", () => {
