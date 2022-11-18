@@ -6,7 +6,7 @@ The goal of this project was to create a team profile generator using the node.j
 Technologies used: HTML, CSS, JavaScript, Node.js
 
 ## Usage
-For a video walkthrough of how the application works, please click [here](https://drive.google.com/file/d/1DjEChcRG73TTPcq3FIMlEyO4_Xy8Ng6E/view).
+For a video walkthrough of how the application works, please click [here](https://drive.google.com/file/d/1c3kW0Pi3aXMXNddcfsHpYekI5ztODWWZ/view).
 
 ## License
 Please refer to the license in the repo. 
